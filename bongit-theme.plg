@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "bongit-theme">
 <!ENTITY author    "bongIT – Markus Bong">
-<!ENTITY version   "2026.11.25.1651">
+<!ENTITY version   "2026.11.25.1742">
 <!ENTITY emhttp    "/usr/local/emhttp/plugins/bongit-theme">
 ]>
 <PLUGIN name="&name;"
@@ -14,6 +14,13 @@
         support="https://github.com/bongIT-OSS/Unraid-Plugins/issues"
         min="7.4.1">
 <CHANGES>
+### 2026.11.25.1742
+- Apps (Community Applications) folgen jetzt der Wahl im Browser statt dem Server-Theme: CA lädt sein Farb-Stylesheet nach Black/White des Servers, deshalb waren auf einem Black-Server in Hell das Suchfeld schwarz, die Kartentexte liefen in einen grauen Verlauf aus und die Knöpfe waren helle Schrift ohne Fläche.  Suchfeld mit Lupe als ein Feld (Rahmen, Fokusring, Abstand zum Menü, Vorschlagsliste in Hausfarben), Knöpfe wie im übrigen Theme, Spotlight als Ring in der Akzentfarbe mit Stern, App-Symbole ohne grauen Kasten, Eckbänder mit lesbarer Schrift.
+- Reiter (z. B. Array-/Pool-/Boot-Datenträger) flach wie das Hauptmenü: ohne Kasten und Sperrsatz, nicht abgeblendet, gewählter Reiter halbfett mit rotem Strich.
+- Die Klasse `dark` am `&lt;body&gt;` folgt jetzt ebenfalls der Wahl im Browser (Tailwind-Teile zeichneten auf Black-Servern auch in Hell dunkel).
+- Alle 71 Seiten hell und dunkel automatisch geprüft; behoben: Markierungen im Systemprotokoll (grelle Pastellflächen in Dunkel), Code-Editor (CodeMirror) in Dunkel, Orange als Schrift in Hell (Kontrast), Rundungen der Vue-Seiten (Update, Downgrade, Registrierung, Protokoll) auf 6 px.
+- Build bricht bei Steuerzeichen in Textdateien ab (ein `\f` aus einem Python-String hatte die .plg ungültig gemacht).
+
 ### 2026.11.25.1651
 - Einstellungsseite und Plugin-Liste: „Herausgeber Markus Bong“ (ohne doppeltes bongIT neben „Ginkgo by bongIT“).
 
@@ -201,7 +208,7 @@ exit 0
 
 <FILE Name="&emhttp;/styles/bongit-theme.css">
 <INLINE><![CDATA[
-/* Ginkgo by bongIT 2026.11.25.1651 :: Unraid im bongIT-Hausstil, hell und dunkel.
+/* Ginkgo by bongIT 2026.11.25.1742 :: Unraid im bongIT-Hausstil, hell und dunkel.
  * (c) 2026 bongIT – Markus Bong, MIT-Lizenz.  Quelle: src/css/ (zusammengefügt von build.py). */
 
 /* ==== 00-farben.css ==== */
@@ -287,9 +294,9 @@ html.bongit-dunkel {
     --bongit-kopf-grund: #0f2a31;
     --bongit-kopf-text: #f2ebdd;
     --bongit-kopf-text-leise: #b8c4c6;
-    --bongit-kopf-logo: url("/plugins/bongit-theme/images/zeichen-papier.png?v=2026.11.25.1651");
-    --bongit-kopf-muster: url("/plugins/bongit-theme/images/platine-dunkel.svg?v=2026.11.25.1651");
-    --bongit-seiten-muster: url("/plugins/bongit-theme/images/flaeche-dunkel.svg?v=2026.11.25.1651");
+    --bongit-kopf-logo: url("/plugins/bongit-theme/images/zeichen-papier.png?v=2026.11.25.1742");
+    --bongit-kopf-muster: url("/plugins/bongit-theme/images/platine-dunkel.svg?v=2026.11.25.1742");
+    --bongit-seiten-muster: url("/plugins/bongit-theme/images/flaeche-dunkel.svg?v=2026.11.25.1742");
     --bongit-menue: #0f2a31;
     --bongit-banner-bild: var(--bongit-banner-dunkel);
     --bongit-banner-hoehe: var(--bongit-banner-dunkel-hoehe, 90px);
@@ -348,9 +355,9 @@ html.bongit-hell {
     --bongit-kopf-grund: #ebe3d1;
     --bongit-kopf-text: #1a3a43;
     --bongit-kopf-text-leise: #4f666d;
-    --bongit-kopf-logo: url("/plugins/bongit-theme/images/zeichen-petrol.png?v=2026.11.25.1651");
-    --bongit-kopf-muster: url("/plugins/bongit-theme/images/platine-hell.svg?v=2026.11.25.1651");
-    --bongit-seiten-muster: url("/plugins/bongit-theme/images/flaeche-hell.svg?v=2026.11.25.1651");
+    --bongit-kopf-logo: url("/plugins/bongit-theme/images/zeichen-petrol.png?v=2026.11.25.1742");
+    --bongit-kopf-muster: url("/plugins/bongit-theme/images/platine-hell.svg?v=2026.11.25.1742");
+    --bongit-seiten-muster: url("/plugins/bongit-theme/images/flaeche-hell.svg?v=2026.11.25.1742");
     --bongit-menue: #1a3a43;
     --bongit-banner-bild: var(--bongit-banner-hell);
     --bongit-banner-hoehe: var(--bongit-banner-hell-hoehe, 90px);
@@ -581,6 +588,8 @@ html.bongit a:hover {
 html.bongit .red-text, html.bongit .red { color: var(--bongit-rot-text); }
 html.bongit .green-text, html.bongit .green { color: var(--bongit-gruen); }
 html.bongit .orange-text, html.bongit .orange { color: var(--bongit-orange); }
+/* hell: Orange als Schrift dunkler, sonst zu wenig Kontrast auf Papier */
+html.bongit.bongit-hell .orange-text, html.bongit.bongit-hell .orange { color: #8a5808; }
 html.bongit .blue-text { color: var(--bongit-link); }
 html.bongit .grey-text, html.bongit .gray-text { color: var(--bongit-text-schwach); }
 
@@ -808,19 +817,40 @@ html.bongit nav.tabs,
 html.bongit .tabs-container {
     border-color: var(--bongit-linie);
 }
+/* Reiter wie das Hauptmenü: flach, ohne Kasten und ohne Sperrsatz; der gewählte Reiter in
+   Textfarbe und halbfett mit rotem Strich unten (wie der aktive Menüpunkt) */
+html.bongit nav.tabs .tabs-container {
+    border-bottom: 1px solid var(--bongit-linie) !important;
+}
 html.bongit .tabs button[role="tab"] {
-    color: var(--bongit-text-leise);
-    border-radius: var(--bongit-radius) var(--bongit-radius) 0 0;
+    color: var(--bongit-text-leise) !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: var(--bongit-radius) var(--bongit-radius) 0 0 !important;
+    box-shadow: none !important;
+    letter-spacing: 0.02em !important;
+    font-weight: 500;
+    opacity: 1 !important;
     transition: color var(--bongit-uebergang), background-color var(--bongit-uebergang);
 }
 html.bongit .tabs button[role="tab"]:hover {
-    color: var(--bongit-text);
-    background-color: var(--bongit-hover);
+    color: var(--bongit-text) !important;
+    background-color: var(--bongit-hover) !important;
 }
 html.bongit .tabs button[role="tab"][aria-selected="true"] {
-    color: var(--bongit-text);
-    background-color: var(--bongit-flaeche);
-    box-shadow: inset 0 -3px 0 var(--bongit-akzent);
+    color: var(--bongit-text) !important;
+    font-weight: 600;
+    box-shadow: inset 0 -3px 0 var(--bongit-rot) !important;
+}
+html.bongit .tabs button[role="tab"] i.fa,
+html.bongit .tabs button[role="tab"] [class^="icon-"] {
+    color: inherit;
+}
+html.bongit.bongit-hell .tabs button[role="tab"][aria-selected="true"] i.fa {
+    color: var(--bongit-akzent);
+}
+html.bongit.bongit-dunkel .tabs button[role="tab"][aria-selected="true"] i.fa {
+    color: var(--bongit-akzent-hell);
 }
 
 /* ---- Titelleisten der Abschnitte (div.title) ------------------------------------- */
@@ -853,7 +883,7 @@ html.bongit #footer {
 html.bongit #footer a { color: var(--bongit-link); }
 html.bongit #footer a:hover { color: var(--bongit-text); }
 html.bongit #copyright::before {
-    content: "Ginkgo by bongIT 2026.11.25.1651";
+    content: "Ginkgo by bongIT 2026.11.25.1742";
     margin-right: 14px;
     color: var(--bongit-text-leise);
     white-space: nowrap;
@@ -1501,6 +1531,12 @@ html.bongit .unapi [data-sonner-toast] {
     box-shadow: var(--bongit-schatten-gross);
 }
 
+/* Vue-Komponenten (Update, Downgrade, Registrierung, Protokoll-Ansicht): Tailwind-Rundungen
+   über 6 px auf den Hausradius; Pillen (rounded-full) bleiben */
+html.bongit .unapi :is(.rounded-md, .rounded-lg, .rounded-xl, .rounded-2xl, .rounded-3xl) {
+    border-radius: var(--bongit-radius) !important;
+}
+
 
 /* ==== 80-seiten.css ==== */
 /* Einzelne Seiten und Plugins mit eigenen Farben. */
@@ -1526,8 +1562,8 @@ html.bongit.bongit-hell i.PanelIcon {
 html.bongit img.PanelImg[src*="/bongit-theme/images/bongit-theme.png"] {
     object-position: -9999px 0;
     background-color: var(--bongit-akzent-hell);
-    -webkit-mask: url("/plugins/bongit-theme/images/bildmarke.png?v=2026.11.25.1651") center / contain no-repeat;
-    mask: url("/plugins/bongit-theme/images/bildmarke.png?v=2026.11.25.1651") center / contain no-repeat;
+    -webkit-mask: url("/plugins/bongit-theme/images/bildmarke.png?v=2026.11.25.1742") center / contain no-repeat;
+    mask: url("/plugins/bongit-theme/images/bildmarke.png?v=2026.11.25.1742") center / contain no-repeat;
 }
 html.bongit.bongit-hell img.PanelImg[src*="/bongit-theme/images/bongit-theme.png"] {
     background-color: var(--bongit-akzent);
@@ -1569,6 +1605,154 @@ html.bongit blockquote:not(.unapi *) {
 }
 
 /* ---- Apps (Community Applications) ---------------------------------------------- */
+/* CA lädt sein Farb-Stylesheet nach dem Server-Theme (skins/Narrow/themes/black.css bzw.
+   white.css), nicht nach der Wahl im Browser: hell auf einem Black-Server bekäme sonst dunkle
+   Suche, graue Verläufe und helle Knopfschrift.  Die Variablen hier gelten in beiden Fassungen
+   (html.bongit schlägt CAs :root unabhängig von der Reihenfolge). */
+html.bongit {
+    --template-background: var(--bongit-flaeche);
+    --template-hover-background: var(--bongit-feld);
+    --template-favourite: var(--bongit-erhoben);
+    --border-color: var(--bongit-linie);
+    --a-color: var(--bongit-link);
+    --sidebar-background: var(--bongit-flaeche);
+    --sidebar-text: var(--bongit-text);
+    --support-popup-text: var(--bongit-text);
+    --support-popup-background: var(--bongit-erhoben);
+    --ca-legacy-background-color: var(--bongit-grund);
+    --tooltipster-content: var(--bongit-text);
+    --chart-grid: var(--bongit-linie);
+    --unraid-66-color: var(--bongit-akzent-hell);
+    --ca-purple-color: var(--bongit-akzent);
+    --ca-dark-purple-color: var(--bongit-akzent);
+    --ca-shadow-color: transparent;
+}
+html.bongit.bongit-hell {
+    --unraid-66-color: var(--bongit-akzent);
+}
+/* CAs black.css hinterlegt App-Symbole grau mit 10 px Rundung – auch wenn hell gewählt ist */
+html.bongit :is(img.ca_displayIcon, img.popupIcon) {
+    background-color: transparent !important;
+    border-radius: var(--bongit-radius) !important;
+}
+/* Suchfeld: Eingabe und Lupe (span.searchSubmit daneben) als ein Feld mit Rahmen, wie die
+   übrigen Eingabefelder; CA schiebt die Eingabe sonst 6 px nach oben und hinterlegt die Lupe
+   eigens */
+html.bongit #searchFilter {
+    display: inline-flex !important;
+    align-items: stretch;
+    height: auto !important;
+    margin: 8px 0 1rem;
+    background: var(--bongit-feld);
+    border: 1px solid var(--bongit-knopf-rand);
+    border-radius: var(--bongit-radius);
+    overflow: hidden;
+}
+html.bongit #searchFilter:focus-within {
+    border-color: var(--bongit-akzent);
+    box-shadow: 0 0 0 3px var(--bongit-fokus);
+}
+html.bongit #searchFilter .awesomplete {
+    display: block !important;
+    height: auto !important;
+}
+html.bongit #searchBox {
+    top: 0 !important;
+    margin: 0 !important;
+    height: 34px !important;
+    box-sizing: border-box;
+    background: transparent !important;
+    color: var(--bongit-text) !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+html.bongit #searchBox::placeholder {
+    color: var(--bongit-text-leise);
+}
+html.bongit #searchFilter .searchSubmit {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    position: static !important;
+    margin: 0 !important;
+    top: 0 !important;
+    width: auto !important;
+    min-width: 0 !important;
+    height: auto !important;
+    padding: 0 12px !important;
+    background: transparent !important;
+    color: var(--bongit-text-leise);
+    border-left: 1px solid var(--bongit-linie);
+    cursor: pointer;
+}
+html.bongit #searchFilter .searchSubmit:hover {
+    color: var(--bongit-text);
+    background: var(--bongit-hover) !important;
+}
+/* Vorschlagsliste unter dem Suchfeld */
+html.bongit .awesomplete > ul {
+    background: var(--bongit-feld) !important;
+    color: var(--bongit-text);
+    border: 1px solid var(--bongit-linie) !important;
+    border-radius: var(--bongit-radius) !important;
+    box-shadow: var(--bongit-schatten-gross) !important;
+}
+html.bongit .awesomplete > ul::before {
+    display: none;
+}
+html.bongit .awesomplete > ul > li:hover,
+html.bongit .awesomplete > ul > li[aria-selected="true"] {
+    background: var(--bongit-auswahl) !important;
+    color: var(--bongit-text) !important;
+}
+html.bongit .awesomplete mark {
+    background: color-mix(in srgb, var(--bongit-orange) 30%, transparent);
+    color: inherit;
+}
+/* Knöpfe der Karten (Info, Support, Installieren …): ruhige Flächen wie die übrigen Knöpfe */
+html.bongit .caButton {
+    background: var(--bongit-erhoben) !important;
+    color: var(--bongit-text) !important;
+    border: 1px solid var(--bongit-linie) !important;
+    border-radius: var(--bongit-radius) !important;
+    box-shadow: none !important;
+    text-decoration: none !important;
+}
+html.bongit .caButton a {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+html.bongit .caButton:hover {
+    background: var(--bongit-knopf) !important;
+    border-color: var(--bongit-knopf) !important;
+    color: var(--bongit-knopf-text) !important;
+}
+/* Spotlight: CAs Ring-Bild (spotlight_black/white.png nach Server-Theme) durch einen Ring in
+   der Akzentfarbe mit Stern ersetzen */
+html.bongit img.spotlightIcon {
+    object-position: -9999px 0;
+    background: radial-gradient(circle, transparent 0 3.3rem, var(--bongit-akzent-hell) calc(3.3rem + 0.5px) 3.8rem, transparent calc(3.8rem + 0.5px)) center / 100% 100% no-repeat;
+}
+html.bongit.bongit-hell img.spotlightIcon {
+    background-image: radial-gradient(circle, transparent 0 3.3rem, var(--bongit-akzent) calc(3.3rem + 0.5px) 3.8rem, transparent calc(3.8rem + 0.5px));
+}
+html.bongit .homespotlightIconArea > div:first-child,
+html.bongit .spotlightIconArea {
+    position: relative;
+}
+html.bongit .homespotlightIconArea > div:first-child::after {
+    content: "\f005";
+    font-family: FontAwesome;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.8rem;
+    color: var(--bongit-orange);
+    pointer-events: none;
+}
 html.bongit .ca_holder,
 html.bongit .ca_appPopup,
 html.bongit .caHomeSpotlight,
@@ -1584,7 +1768,8 @@ html.bongit .ca_holder:hover {
     border-color: var(--bongit-linie-stark) !important;
 }
 /* Eckbänder der Kacheln (installiert, offiziell, Warnung) in Hausfarben */
-html.bongit .installedCardBackground { background-color: var(--bongit-akzent) !important; }
+html.bongit .installedCardBackground { background-color: var(--bongit-knopf) !important; }
+html.bongit :is(.installedCardText, .officialCardText, .betaCardText, .warningCardText) { color: var(--bongit-knopf-text) !important; }
 html.bongit .officialCardBackground,
 html.bongit .LTOfficialCardBackground { background-color: var(--bongit-knopf) !important; }
 html.bongit .warningCardBackground { background-color: var(--bongit-rot) !important; }
@@ -1599,6 +1784,26 @@ html.bongit .caMenuItem.selectedMenu a {
 html.bongit.bongit-hell .caMenuItem.selectedMenu,
 html.bongit.bongit-hell .caMenuItem.selectedMenu a {
     color: var(--bongit-akzent);
+}
+
+/* ---- Systemprotokoll: Markierungen (system, warn, login, error, array) -------------
+   Unraid hinterlegt sie mit festen Pastelltönen – in Dunkel grelle Flächen.  Hier ein
+   schwacher Ton der jeweiligen Schriftfarbe. */
+html.bongit :is(span.system, span.warn, span.login, span.error, span.array) {
+    background-color: color-mix(in srgb, currentColor 16%, transparent) !important;
+}
+
+/* ---- Code-Editor (CodeMirror, z. B. User Scripts Enhanced) ----------------------- */
+html.bongit.bongit-dunkel .CodeMirror {
+    background: var(--bongit-feld) !important;
+    color: var(--bongit-text) !important;
+}
+html.bongit.bongit-dunkel .CodeMirror-gutters {
+    background: var(--bongit-erhoben) !important;
+    border-color: var(--bongit-linie) !important;
+}
+html.bongit.bongit-dunkel .CodeMirror-cursor {
+    border-color: var(--bongit-text) !important;
 }
 
 
@@ -1668,11 +1873,11 @@ html.bongit #footer .footer-right {
     }
 }
 ]]></INLINE>
-<SHA256>995c9028c160b3aa96d12d382ddfa337a93c8401c181be54f1117856ba4c7c04</SHA256>
+<SHA256>7c1ad24e2ead20a79918a71100b64e0a045dd1e86b1c22ae12b050aea1a83f3a</SHA256>
 </FILE>
 <FILE Name="&emhttp;/styles/login.css">
 <INLINE><![CDATA[
-/* Ginkgo by bongIT 2026.11.25.1651: Login-Seite (c) 2026 bongIT – Markus Bong, MIT-Lizenz.
+/* Ginkgo by bongIT 2026.11.25.1742: Login-Seite (c) 2026 bongIT – Markus Bong, MIT-Lizenz.
  *
  * Steht am Ende von default-cases.css, das Unraid auf jeder Seite lädt – deshalb gilt alles
  * nur für Elemente der Login-Seite (#login).  Hell oder dunkel nach der Systemeinstellung des
@@ -1735,7 +1940,7 @@ section#login .angle::after {
     display: none !important;
 }
 section#login .wordmark {
-    background: url("/plugins/bongit-theme/images/logo-papier.png?v=2026.11.25.1651") left center / contain no-repeat;
+    background: url("/plugins/bongit-theme/images/logo-papier.png?v=2026.11.25.1742") left center / contain no-repeat;
 }
 section#login .wordmark svg {
     opacity: 0;
@@ -1777,11 +1982,11 @@ section#login .error {
     color: var(--bl-rot) !important;
 }
 ]]></INLINE>
-<SHA256>f8369d05705ead37c19e0e87a14bf55f7eede5b3d548e4894cf1a5665536f031</SHA256>
+<SHA256>bdfc1bad71279aa12b01b5b31faccc4f388588017b2cd614126dd3c3f44a5ea1</SHA256>
 </FILE>
 <FILE Name="&emhttp;/styles/protokoll.css">
 <INLINE><![CDATA[
-/* Ginkgo by bongIT 2026.11.25.1651: Protokollfenster (logging.htm) (c) 2026 bongIT – Markus Bong, MIT.
+/* Ginkgo by bongIT 2026.11.25.1742: Protokollfenster (logging.htm) (c) 2026 bongIT – Markus Bong, MIT.
  * Fassung über die Klasse am <html> (setzt der Block in logging.htm, siehe einbinden.sh). */
 html.bongit {
     --bp-grund: #fbf8f2;
@@ -1820,7 +2025,7 @@ html.bongit.bongit-dunkel span.system { color: #9ed3df; background-color: rgb(61
 html.bongit.bongit-dunkel span.array { color: #5cd68a; background-color: rgb(92 214 138 / 0.14); }
 html.bongit.bongit-dunkel span.login { color: #ffb38a; background-color: rgb(255 120 60 / 0.14); }
 ]]></INLINE>
-<SHA256>18d517a3331846b307624ac71a248420285b50471c6c5fc4b10c034379422ef0</SHA256>
+<SHA256>c895bff06eef6edde933870e74ea2f66268bcfe95392bb03e4c1654e5f9b84d2</SHA256>
 </FILE>
 <FILE Name="&emhttp;/BongitTheme.page">
 <INLINE><![CDATA[
@@ -2287,6 +2492,9 @@ if ($bongit['aktiv']):
   // Unraids Vue-Komponenten (Kopf, Benachrichtigungen, Menüs, Toasts; Klasse .unapi) tragen
   // "dark" nach der Server-Einstellung; hier nach der Wahl des Browsers.
   function komponenten(dunkel) {
+    // body trägt "dark" ebenfalls nach der Server-Einstellung (Black); Tailwind-Regeln
+    // (dark:…) darunter würden sonst auch in Hell dunkel zeichnen
+    if (document.body && document.body.classList.contains('dark') !== dunkel) document.body.classList.toggle('dark', dunkel);
     var teile = document.querySelectorAll('.unapi');
     for (var i = 0; i < teile.length; i++) {
       if (teile[i].classList.contains('dark') !== dunkel) teile[i].classList.toggle('dark', dunkel);
@@ -2352,7 +2560,7 @@ if ($bongit['aktiv']):
 <style>.nav-item.BongitThemeModus { display: none; }</style>
 <?php endif; ?>
 ]]></INLINE>
-<SHA256>8b258572378a391c58f6847d8612964f8c9d15dd4c934a2a75e5038a71a1400e</SHA256>
+<SHA256>430689bad6cfeb34b1573b73d43348a3e175d0b35e1f1511f477dd8210364851</SHA256>
 </FILE>
 <FILE Name="&emhttp;/include/banner.php">
 <INLINE><![CDATA[
@@ -2563,9 +2771,9 @@ Einstellungen unter „Ginkgo“.  Hell/Dunkel/Automatisch: Knopf oben rechts in
 </FILE>
 <FILE Name="&emhttp;/VERSION">
 <INLINE><![CDATA[
-2026.11.25.1651
+2026.11.25.1742
 ]]></INLINE>
-<SHA256>646ae0be3a9f7fb2116e48fff58c76ea87245014827718fd2fe1ea8c8d303c97</SHA256>
+<SHA256>9ef3e22c1e1631a7bb356e97082e2ab9008b335e8414bd0d8daea0569cb5564d</SHA256>
 </FILE>
 <FILE Name="&emhttp;/images/bildmarke.png" Type="base64">
 <INLINE>iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAA0qUlEQVR42u19eXxcZdX/Oee5k5kkkyZNG2buvWkjULaySoFSNlnE
@@ -3663,7 +3871,7 @@ WAbQGctYBtAZy9gH2/8H0cSFaeoZRjEAAAAASUVORK5CYII=</INLINE>
 bash /usr/local/emhttp/plugins/bongit-theme/scripts/einbinden.sh >/dev/null
 echo ""
 echo "----------------------------------------------------------------"
-echo " Ginkgo by bongIT 2026.11.25.1651 ist installiert."
+echo " Ginkgo by bongIT 2026.11.25.1742 ist installiert."
 if [ -f /boot/config/plugins/bongit-theme/DISABLED ]; then
   echo " Notschalter: /boot/config/plugins/bongit-theme/DISABLED liegt vor, das Theme bleibt aus."
 else
