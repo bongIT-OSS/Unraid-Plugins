@@ -12,4 +12,4 @@ Unraid plugins by bongIT – Markus Bong, listed in Community Applications.
 
 Requires Unraid 7.4.1 or newer. Questions and problems: [Issues](https://github.com/bongIT-OSS/Unraid-Plugins/issues).
 
-MIT License, see [LICENSE](LICENSE). bongIT Theme is based on Aether Glass by aegisnir (MIT).
+MIT License, see [LICENSE](LICENSE).

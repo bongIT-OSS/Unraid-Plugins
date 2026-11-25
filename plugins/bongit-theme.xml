@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Plugin>
   <Name>bongIT Theme</Name>
-  <Overview>A calm light and dark theme for the Unraid webGUI in the bongIT house style (petrol, paper, red). CSS only, no services or binaries: it appends its stylesheets to Unraid's Black and White themes and restores them on removal.
+  <Overview>A calm light and dark theme for the Unraid webGUI in the bongIT house style (petrol, paper, red). CSS only, no services or binaries: it adds its own stylesheet to the webGUI and leaves Unraid's theme files untouched (the login page and the log window get a small marked block that is removed on uninstall).
 
-- Light and dark follow Unraid's colour scheme (White / Black); each browser can switch with the sun/moon button in the toolbar without changing the server setting.
+- Light, dark or automatic (follows the device) – each browser chooses with the button in the toolbar; without a choice Unraid's colour scheme applies (White = light, Black = dark).
 - Header with a circuit-board pattern or your own banner images (light and dark), bongIT logo instead of the Unraid wordmark, tidy dashboard tiles, dialogs, tables and plugin pages.
 - Settings page (Settings → bongIT Theme) in German.
 
-Requires Unraid 7.4.1 or newer. Based on Aether Glass by aegisnir (MIT).</Overview>
+Requires Unraid 7.4.1 or newer.</Overview>
   <PluginURL>https://raw.githubusercontent.com/bongIT-OSS/Unraid-Plugins/main/bongit-theme.plg</PluginURL>
   <PluginAuthor>bongIT – Markus Bong</PluginAuthor>
   <Support>https://github.com/bongIT-OSS/Unraid-Plugins/issues</Support>
