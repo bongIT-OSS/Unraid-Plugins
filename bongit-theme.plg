@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "bongit-theme">
 <!ENTITY author    "bongIT – Markus Bong">
-<!ENTITY version   "2026.11.25.1839">
+<!ENTITY version   "2026.11.25.2223">
 <!ENTITY emhttp    "/usr/local/emhttp/plugins/bongit-theme">
 ]>
 <PLUGIN name="&name;"
@@ -14,6 +14,9 @@
         support="https://github.com/bongIT-OSS/Unraid-Plugins/issues"
         min="7.4.1">
 <CHANGES>
+### 2026.11.25.2223
+- Klasse `dark` am `&lt;body&gt;` wird auch in Tabs umgestellt, die im Hintergrund laden.
+
 ### 2026.11.25.1839
 - Alle Seiten hell und dunkel per Bildschirmfoto durchgesehen (Maßstab Übersicht und Start); behoben:
   - Reiter: kein abgeschnittener Fokusring mehr (türkiser Strich rechts am gewählten Reiter), Fokus jetzt hinterlegt.
@@ -220,7 +223,7 @@ exit 0
 
 <FILE Name="&emhttp;/styles/bongit-theme.css">
 <INLINE><![CDATA[
-/* Ginkgo by bongIT 2026.11.25.1839 :: Unraid im bongIT-Hausstil, hell und dunkel.
+/* Ginkgo by bongIT 2026.11.25.2223 :: Unraid im bongIT-Hausstil, hell und dunkel.
  * (c) 2026 bongIT – Markus Bong, MIT-Lizenz.  Quelle: src/css/ (zusammengefügt von build.py). */
 
 /* ==== 00-farben.css ==== */
@@ -306,9 +309,9 @@ html.bongit-dunkel {
     --bongit-kopf-grund: #0f2a31;
     --bongit-kopf-text: #f2ebdd;
     --bongit-kopf-text-leise: #b8c4c6;
-    --bongit-kopf-logo: url("/plugins/bongit-theme/images/zeichen-papier.png?v=2026.11.25.1839");
-    --bongit-kopf-muster: url("/plugins/bongit-theme/images/platine-dunkel.svg?v=2026.11.25.1839");
-    --bongit-seiten-muster: url("/plugins/bongit-theme/images/flaeche-dunkel.svg?v=2026.11.25.1839");
+    --bongit-kopf-logo: url("/plugins/bongit-theme/images/zeichen-papier.png?v=2026.11.25.2223");
+    --bongit-kopf-muster: url("/plugins/bongit-theme/images/platine-dunkel.svg?v=2026.11.25.2223");
+    --bongit-seiten-muster: url("/plugins/bongit-theme/images/flaeche-dunkel.svg?v=2026.11.25.2223");
     --bongit-menue: #0f2a31;
     --bongit-banner-bild: var(--bongit-banner-dunkel);
     --bongit-banner-hoehe: var(--bongit-banner-dunkel-hoehe, 90px);
@@ -367,9 +370,9 @@ html.bongit-hell {
     --bongit-kopf-grund: #ebe3d1;
     --bongit-kopf-text: #1a3a43;
     --bongit-kopf-text-leise: #4f666d;
-    --bongit-kopf-logo: url("/plugins/bongit-theme/images/zeichen-petrol.png?v=2026.11.25.1839");
-    --bongit-kopf-muster: url("/plugins/bongit-theme/images/platine-hell.svg?v=2026.11.25.1839");
-    --bongit-seiten-muster: url("/plugins/bongit-theme/images/flaeche-hell.svg?v=2026.11.25.1839");
+    --bongit-kopf-logo: url("/plugins/bongit-theme/images/zeichen-petrol.png?v=2026.11.25.2223");
+    --bongit-kopf-muster: url("/plugins/bongit-theme/images/platine-hell.svg?v=2026.11.25.2223");
+    --bongit-seiten-muster: url("/plugins/bongit-theme/images/flaeche-hell.svg?v=2026.11.25.2223");
     --bongit-menue: #1a3a43;
     --bongit-banner-bild: var(--bongit-banner-hell);
     --bongit-banner-hoehe: var(--bongit-banner-hell-hoehe, 90px);
@@ -925,7 +928,7 @@ html.bongit #footer {
 html.bongit #footer a { color: var(--bongit-link); }
 html.bongit #footer a:hover { color: var(--bongit-text); }
 html.bongit #copyright::before {
-    content: "Ginkgo by bongIT 2026.11.25.1839";
+    content: "Ginkgo by bongIT 2026.11.25.2223";
     margin-right: 14px;
     color: var(--bongit-text-leise);
     white-space: nowrap;
@@ -1658,8 +1661,8 @@ html.bongit.bongit-hell i.PanelIcon {
 html.bongit img.PanelImg[src*="/bongit-theme/images/bongit-theme.png"] {
     object-position: -9999px 0;
     background-color: var(--bongit-akzent-hell);
-    -webkit-mask: url("/plugins/bongit-theme/images/bildmarke.png?v=2026.11.25.1839") center / contain no-repeat;
-    mask: url("/plugins/bongit-theme/images/bildmarke.png?v=2026.11.25.1839") center / contain no-repeat;
+    -webkit-mask: url("/plugins/bongit-theme/images/bildmarke.png?v=2026.11.25.2223") center / contain no-repeat;
+    mask: url("/plugins/bongit-theme/images/bildmarke.png?v=2026.11.25.2223") center / contain no-repeat;
 }
 html.bongit.bongit-hell img.PanelImg[src*="/bongit-theme/images/bongit-theme.png"] {
     background-color: var(--bongit-akzent);
@@ -2126,11 +2129,11 @@ html.bongit #footer .footer-right {
     }
 }
 ]]></INLINE>
-<SHA256>cba8f9e08c03100619c247380e92c8ad2dfb4e275875bb820bb78c1e5a6da6ae</SHA256>
+<SHA256>09ae93be4478650baf074c212e9305e4f2bb0511f817d83987c14768c11ed8d3</SHA256>
 </FILE>
 <FILE Name="&emhttp;/styles/login.css">
 <INLINE><![CDATA[
-/* Ginkgo by bongIT 2026.11.25.1839: Login-Seite (c) 2026 bongIT – Markus Bong, MIT-Lizenz.
+/* Ginkgo by bongIT 2026.11.25.2223: Login-Seite (c) 2026 bongIT – Markus Bong, MIT-Lizenz.
  *
  * Steht am Ende von default-cases.css, das Unraid auf jeder Seite lädt – deshalb gilt alles
  * nur für Elemente der Login-Seite (#login).  Hell oder dunkel nach der Systemeinstellung des
@@ -2193,7 +2196,7 @@ section#login .angle::after {
     display: none !important;
 }
 section#login .wordmark {
-    background: url("/plugins/bongit-theme/images/logo-papier.png?v=2026.11.25.1839") left center / contain no-repeat;
+    background: url("/plugins/bongit-theme/images/logo-papier.png?v=2026.11.25.2223") left center / contain no-repeat;
 }
 section#login .wordmark svg {
     opacity: 0;
@@ -2235,11 +2238,11 @@ section#login .error {
     color: var(--bl-rot) !important;
 }
 ]]></INLINE>
-<SHA256>8f547a53ac7af883fe180abf52b8316250fa689053622e16dc7f54a8242a2a06</SHA256>
+<SHA256>01049f23ca6be9becf6954e3617be6d8df403b4674b709422896d35c582a703b</SHA256>
 </FILE>
 <FILE Name="&emhttp;/styles/protokoll.css">
 <INLINE><![CDATA[
-/* Ginkgo by bongIT 2026.11.25.1839: Protokollfenster (logging.htm) (c) 2026 bongIT – Markus Bong, MIT.
+/* Ginkgo by bongIT 2026.11.25.2223: Protokollfenster (logging.htm) (c) 2026 bongIT – Markus Bong, MIT.
  * Fassung über die Klasse am <html> (setzt der Block in logging.htm, siehe einbinden.sh). */
 html.bongit {
     --bp-grund: #fbf8f2;
@@ -2278,7 +2281,7 @@ html.bongit.bongit-dunkel span.system { color: #9ed3df; background-color: rgb(61
 html.bongit.bongit-dunkel span.array { color: #5cd68a; background-color: rgb(92 214 138 / 0.14); }
 html.bongit.bongit-dunkel span.login { color: #ffb38a; background-color: rgb(255 120 60 / 0.14); }
 ]]></INLINE>
-<SHA256>d3e223b9ad533665b01c416813a5f31ee68466fa27674e70bcdbc38de6288629</SHA256>
+<SHA256>eeb3a63fcc9104e6eedaa2dfeb0846107d01cb9e001ca4f768c556b9ae441284</SHA256>
 </FILE>
 <FILE Name="&emhttp;/BongitTheme.page">
 <INLINE><![CDATA[
@@ -2806,14 +2809,15 @@ if ($bongit['aktiv']):
     geplant = true;
     requestAnimationFrame(function () { geplant = false; komponenten(fassung() === 'dunkel'); });
   }).observe(html, { childList: true, subtree: true, attributes: true, attributeFilter: ['class'] });
-  document.addEventListener('DOMContentLoaded', knopf);
+  // body gibt es erst jetzt; direkt umstellen (requestAnimationFrame ruht in Hintergrund-Tabs)
+  document.addEventListener('DOMContentLoaded', function () { komponenten(fassung() === 'dunkel'); knopf(); });
 })();
 </script>
 <?php else: ?>
 <style>.nav-item.BongitThemeModus { display: none; }</style>
 <?php endif; ?>
 ]]></INLINE>
-<SHA256>430689bad6cfeb34b1573b73d43348a3e175d0b35e1f1511f477dd8210364851</SHA256>
+<SHA256>88e632200482345f100dae6b7fc8d909b24dc4ec41dc1d53dfd7a2251156d8ec</SHA256>
 </FILE>
 <FILE Name="&emhttp;/include/banner.php">
 <INLINE><![CDATA[
@@ -3024,9 +3028,9 @@ Einstellungen unter „Ginkgo“.  Hell/Dunkel/Automatisch: Knopf oben rechts in
 </FILE>
 <FILE Name="&emhttp;/VERSION">
 <INLINE><![CDATA[
-2026.11.25.1839
+2026.11.25.2223
 ]]></INLINE>
-<SHA256>55b2fca2c8b7ea15f310ed75b715506c8ecf6241f9b1585a04b446ea7233fc10</SHA256>
+<SHA256>ea999d46c75b9c05e3301f4c0b5e912a0ea4a6d98165cd32b40eae3554e7d24a</SHA256>
 </FILE>
 <FILE Name="&emhttp;/images/bildmarke.png" Type="base64">
 <INLINE>iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAA0qUlEQVR42u19eXxcZdX/Oee5k5kkkyZNG2buvWkjULaySoFSNlnE
@@ -4124,7 +4128,7 @@ WAbQGctYBtAZy9gH2/8H0cSFaeoZRjEAAAAASUVORK5CYII=</INLINE>
 bash /usr/local/emhttp/plugins/bongit-theme/scripts/einbinden.sh >/dev/null
 echo ""
 echo "----------------------------------------------------------------"
-echo " Ginkgo by bongIT 2026.11.25.1839 ist installiert."
+echo " Ginkgo by bongIT 2026.11.25.2223 ist installiert."
 if [ -f /boot/config/plugins/bongit-theme/DISABLED ]; then
   echo " Notschalter: /boot/config/plugins/bongit-theme/DISABLED liegt vor, das Theme bleibt aus."
 else
