@@ -4,7 +4,7 @@ Unraid plugins by bongIT – Markus Bong, listed in Community Applications.
 
 | Plugin | Install (Plugins → Install Plugin) |
 |---|---|
-| **bongIT Theme** – light and dark webGUI theme in the bongIT house style | `https://raw.githubusercontent.com/bongIT-OSS/Unraid-Plugins/main/bongit-theme.plg` |
+| **Ginkgo** by bongIT – light and dark webGUI theme in the bongIT house style | `https://raw.githubusercontent.com/bongIT-OSS/Unraid-Plugins/main/bongit-theme.plg` |
 
 - `bongit-theme.plg` – the plugin itself (built and published by bongIT's release script; do not edit here)
 - `plugins/` – Community Applications templates
