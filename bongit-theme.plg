@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "bongit-theme">
 <!ENTITY author    "bongIT – Markus Bong">
-<!ENTITY version   "2026.11.25.2315">
+<!ENTITY version   "2026.11.25.2327">
 <!ENTITY emhttp    "/usr/local/emhttp/plugins/bongit-theme">
 ]>
 <PLUGIN name="&name;"
@@ -14,6 +14,9 @@
         support="https://github.com/bongIT-OSS/Unraid-Plugins/issues"
         min="7.4.1">
 <CHANGES>
+### 2026.11.25.2327
+- Login-Seite: Bildmarke mittig im Kopf der Karte und jetzt überhaupt sichtbar – sie ist ins Stylesheet eingebettet, weil Unraid ohne Anmeldung keine Bilder aus dem Plugin-Ordner ausliefert.
+
 ### 2026.11.25.2315
 - Login-Seite, Browser-Symbol (Favicon, Apple-Touch) und Plugin-Symbol ohne bongIT-Logo: überall nur die Bildmarke (Ginkgo-Netz mit rotem Knoten), beim Symbol auf einer Papier-Scheibe.
 
@@ -226,7 +229,7 @@ exit 0
 
 <FILE Name="&emhttp;/styles/bongit-theme.css">
 <INLINE><![CDATA[
-/* Ginkgo by bongIT 2026.11.25.2315 :: Unraid im bongIT-Hausstil, hell und dunkel.
+/* Ginkgo by bongIT 2026.11.25.2327 :: Unraid im bongIT-Hausstil, hell und dunkel.
  * (c) 2026 bongIT – Markus Bong, MIT-Lizenz.  Quelle: src/css/ (zusammengefügt von build.py). */
 
 /* ==== 00-farben.css ==== */
@@ -312,9 +315,9 @@ html.bongit-dunkel {
     --bongit-kopf-grund: #0f2a31;
     --bongit-kopf-text: #f2ebdd;
     --bongit-kopf-text-leise: #b8c4c6;
-    --bongit-kopf-logo: url("/plugins/bongit-theme/images/zeichen-papier.png?v=2026.11.25.2315");
-    --bongit-kopf-muster: url("/plugins/bongit-theme/images/platine-dunkel.svg?v=2026.11.25.2315");
-    --bongit-seiten-muster: url("/plugins/bongit-theme/images/flaeche-dunkel.svg?v=2026.11.25.2315");
+    --bongit-kopf-logo: url("/plugins/bongit-theme/images/zeichen-papier.png?v=2026.11.25.2327");
+    --bongit-kopf-muster: url("/plugins/bongit-theme/images/platine-dunkel.svg?v=2026.11.25.2327");
+    --bongit-seiten-muster: url("/plugins/bongit-theme/images/flaeche-dunkel.svg?v=2026.11.25.2327");
     --bongit-menue: #0f2a31;
     --bongit-banner-bild: var(--bongit-banner-dunkel);
     --bongit-banner-hoehe: var(--bongit-banner-dunkel-hoehe, 90px);
@@ -373,9 +376,9 @@ html.bongit-hell {
     --bongit-kopf-grund: #ebe3d1;
     --bongit-kopf-text: #1a3a43;
     --bongit-kopf-text-leise: #4f666d;
-    --bongit-kopf-logo: url("/plugins/bongit-theme/images/zeichen-petrol.png?v=2026.11.25.2315");
-    --bongit-kopf-muster: url("/plugins/bongit-theme/images/platine-hell.svg?v=2026.11.25.2315");
-    --bongit-seiten-muster: url("/plugins/bongit-theme/images/flaeche-hell.svg?v=2026.11.25.2315");
+    --bongit-kopf-logo: url("/plugins/bongit-theme/images/zeichen-petrol.png?v=2026.11.25.2327");
+    --bongit-kopf-muster: url("/plugins/bongit-theme/images/platine-hell.svg?v=2026.11.25.2327");
+    --bongit-seiten-muster: url("/plugins/bongit-theme/images/flaeche-hell.svg?v=2026.11.25.2327");
     --bongit-menue: #1a3a43;
     --bongit-banner-bild: var(--bongit-banner-hell);
     --bongit-banner-hoehe: var(--bongit-banner-hell-hoehe, 90px);
@@ -931,7 +934,7 @@ html.bongit #footer {
 html.bongit #footer a { color: var(--bongit-link); }
 html.bongit #footer a:hover { color: var(--bongit-text); }
 html.bongit #copyright::before {
-    content: "Ginkgo by bongIT 2026.11.25.2315";
+    content: "Ginkgo by bongIT 2026.11.25.2327";
     margin-right: 14px;
     color: var(--bongit-text-leise);
     white-space: nowrap;
@@ -1664,8 +1667,8 @@ html.bongit.bongit-hell i.PanelIcon {
 html.bongit img.PanelImg[src*="/bongit-theme/images/bongit-theme.png"] {
     object-position: -9999px 0;
     background-color: var(--bongit-akzent-hell);
-    -webkit-mask: url("/plugins/bongit-theme/images/bildmarke.png?v=2026.11.25.2315") center / contain no-repeat;
-    mask: url("/plugins/bongit-theme/images/bildmarke.png?v=2026.11.25.2315") center / contain no-repeat;
+    -webkit-mask: url("/plugins/bongit-theme/images/bildmarke.png?v=2026.11.25.2327") center / contain no-repeat;
+    mask: url("/plugins/bongit-theme/images/bildmarke.png?v=2026.11.25.2327") center / contain no-repeat;
 }
 html.bongit.bongit-hell img.PanelImg[src*="/bongit-theme/images/bongit-theme.png"] {
     background-color: var(--bongit-akzent);
@@ -2132,11 +2135,11 @@ html.bongit #footer .footer-right {
     }
 }
 ]]></INLINE>
-<SHA256>fb9afa7d8256a88d00ff24c06da3553abbae09ec6f67230816cbe0a1b7bd1551</SHA256>
+<SHA256>3678569a3c51ee3f2350c05c02faf3f12772640ae82e220e59c0b5f24cbbd820</SHA256>
 </FILE>
 <FILE Name="&emhttp;/styles/login.css">
 <INLINE><![CDATA[
-/* Ginkgo by bongIT 2026.11.25.2315: Login-Seite (c) 2026 bongIT – Markus Bong, MIT-Lizenz.
+/* Ginkgo by bongIT 2026.11.25.2327: Login-Seite (c) 2026 bongIT – Markus Bong, MIT-Lizenz.
  *
  * Steht am Ende von default-cases.css, das Unraid auf jeder Seite lädt – deshalb gilt alles
  * nur für Elemente der Login-Seite (#login).  Hell oder dunkel nach der Systemeinstellung des
@@ -2198,11 +2201,16 @@ section#login .logo.angle::after,
 section#login .angle::after {
     display: none !important;
 }
+/* Bildmarke mittig im Kopf (der Schriftzug bleibt unsichtbar im Fluss, damit die Karte
+   ihre Höhe behält) */
 section#login .wordmark {
-    background: url("/plugins/bongit-theme/images/zeichen-papier.png?v=2026.11.25.2315") left center / contain no-repeat;
+    box-sizing: border-box;
+    height: 100%;
+    padding: 0 !important;
+    background: url("data:image/png;base64,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") center / auto 64px no-repeat;
 }
 section#login .wordmark svg {
-    opacity: 0;
+    display: none;
 }
 section#login h1,
 section#login h2 {
@@ -2241,11 +2249,11 @@ section#login .error {
     color: var(--bl-rot) !important;
 }
 ]]></INLINE>
-<SHA256>1da6b996d2999b7b1a4b8f9c6c928f81814d0925531fe92094d6378623e4cc92</SHA256>
+<SHA256>3ebc36397caa994ef8e6dabb2d6b86a22e3a1cce717ee91d549e26e604dadcf9</SHA256>
 </FILE>
 <FILE Name="&emhttp;/styles/protokoll.css">
 <INLINE><![CDATA[
-/* Ginkgo by bongIT 2026.11.25.2315: Protokollfenster (logging.htm) (c) 2026 bongIT – Markus Bong, MIT.
+/* Ginkgo by bongIT 2026.11.25.2327: Protokollfenster (logging.htm) (c) 2026 bongIT – Markus Bong, MIT.
  * Fassung über die Klasse am <html> (setzt der Block in logging.htm, siehe einbinden.sh). */
 html.bongit {
     --bp-grund: #fbf8f2;
@@ -2284,7 +2292,7 @@ html.bongit.bongit-dunkel span.system { color: #9ed3df; background-color: rgb(61
 html.bongit.bongit-dunkel span.array { color: #5cd68a; background-color: rgb(92 214 138 / 0.14); }
 html.bongit.bongit-dunkel span.login { color: #ffb38a; background-color: rgb(255 120 60 / 0.14); }
 ]]></INLINE>
-<SHA256>b6ab26f1b50c88f15a264d2c8479f22fa4563546794d634c8a4c889421d31c2b</SHA256>
+<SHA256>07b3b23051d0372a93338280e6e9f2835f90a0aae5d3245baea57b4a00d92a89</SHA256>
 </FILE>
 <FILE Name="&emhttp;/BongitTheme.page">
 <INLINE><![CDATA[
@@ -3031,9 +3039,9 @@ Einstellungen unter „Ginkgo“.  Hell/Dunkel/Automatisch: Knopf oben rechts in
 </FILE>
 <FILE Name="&emhttp;/VERSION">
 <INLINE><![CDATA[
-2026.11.25.2315
+2026.11.25.2327
 ]]></INLINE>
-<SHA256>dcce86b17a3cf435d3030a9e4a7c028fb1393943c903c23261397288aed10a0f</SHA256>
+<SHA256>7aa631d4ca36a93755ad3621ae6fffc82c2c6d0aaae855a283ada7b4dcbec9e5</SHA256>
 </FILE>
 <FILE Name="&emhttp;/images/bildmarke.png" Type="base64">
 <INLINE>iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAA0qUlEQVR42u19eXxcZdX/Oee5k5kkkyZNG2buvWkjULaySoFSNlnE
@@ -3983,7 +3991,7 @@ HrJ/Jjahaz6rM/y+ajdz2bAJXfMqLAgYpkk8lbYDwW6LtgldkzMdKo0L87j8nFNp16Qeqm00Y9sY1HRP
 bash /usr/local/emhttp/plugins/bongit-theme/scripts/einbinden.sh >/dev/null
 echo ""
 echo "----------------------------------------------------------------"
-echo " Ginkgo by bongIT 2026.11.25.2315 ist installiert."
+echo " Ginkgo by bongIT 2026.11.25.2327 ist installiert."
 if [ -f /boot/config/plugins/bongit-theme/DISABLED ]; then
   echo " Notschalter: /boot/config/plugins/bongit-theme/DISABLED liegt vor, das Theme bleibt aus."
 else
