@@ -2,7 +2,7 @@
 <!DOCTYPE PLUGIN [
 <!ENTITY name      "bongit-theme">
 <!ENTITY author    "bongIT – Markus Bong">
-<!ENTITY version   "2026.11.25.1746">
+<!ENTITY version   "2026.11.25.1839">
 <!ENTITY emhttp    "/usr/local/emhttp/plugins/bongit-theme">
 ]>
 <PLUGIN name="&name;"
@@ -14,6 +14,15 @@
         support="https://github.com/bongIT-OSS/Unraid-Plugins/issues"
         min="7.4.1">
 <CHANGES>
+### 2026.11.25.1839
+- Alle Seiten hell und dunkel per Bildschirmfoto durchgesehen (Maßstab Übersicht und Start); behoben:
+  - Reiter: kein abgeschnittener Fokusring mehr (türkiser Strich rechts am gewählten Reiter), Fokus jetzt hinterlegt.
+  - Statistik: Diagramme auf der Kachelfläche statt Schwarz-Grau-Verlauf, Achsentexte lesbar, Balken in Hausfarben, kein weißer Schein an Fortschrittsbalken.
+  - User Scripts: Kategorie-Köpfe ohne Rot-Türkis-Verlauf, lesbare Schrift; Boot Parameters: Abschnitte, Legende und Chips im Hausstil statt Unraid-Orange und Grau.
+  - Downgrade und Registrierung: Nebenknöpfe, Badges, Ränder und Grün in Hausfarben, Schritt-Kreise rot statt Rot-Orange-Verlauf.
+  - Start: Tabellen von Unassigned Devices als Karte wie die Array-Tabellen; Einstellungsgruppen (Netzwerk, Proxy, Freigabe-Details) mit Rand und 6 px.
+  - Apps: Beta-Ecke in Dunkel lesbar; Systemprotokoll in Hell lesbare Farben; Code-Editor-Rand in Hell; Tabellenköpfe (Treiber) nicht fett; weitere Rundungen auf 6 px.
+
 ### 2026.11.25.1746
 - Apps: Karten so plastisch wie die Kacheln der Übersicht – gleiche Fläche (dunkel oben heller), Lichtkante und Schatten; die waagerecht scrollenden Reihen der Startseite schnitten den Schatten bisher ab.
 
@@ -211,7 +220,7 @@ exit 0
 
 <FILE Name="&emhttp;/styles/bongit-theme.css">
 <INLINE><![CDATA[
-/* Ginkgo by bongIT 2026.11.25.1746 :: Unraid im bongIT-Hausstil, hell und dunkel.
+/* Ginkgo by bongIT 2026.11.25.1839 :: Unraid im bongIT-Hausstil, hell und dunkel.
  * (c) 2026 bongIT – Markus Bong, MIT-Lizenz.  Quelle: src/css/ (zusammengefügt von build.py). */
 
 /* ==== 00-farben.css ==== */
@@ -297,9 +306,9 @@ html.bongit-dunkel {
     --bongit-kopf-grund: #0f2a31;
     --bongit-kopf-text: #f2ebdd;
     --bongit-kopf-text-leise: #b8c4c6;
-    --bongit-kopf-logo: url("/plugins/bongit-theme/images/zeichen-papier.png?v=2026.11.25.1746");
-    --bongit-kopf-muster: url("/plugins/bongit-theme/images/platine-dunkel.svg?v=2026.11.25.1746");
-    --bongit-seiten-muster: url("/plugins/bongit-theme/images/flaeche-dunkel.svg?v=2026.11.25.1746");
+    --bongit-kopf-logo: url("/plugins/bongit-theme/images/zeichen-papier.png?v=2026.11.25.1839");
+    --bongit-kopf-muster: url("/plugins/bongit-theme/images/platine-dunkel.svg?v=2026.11.25.1839");
+    --bongit-seiten-muster: url("/plugins/bongit-theme/images/flaeche-dunkel.svg?v=2026.11.25.1839");
     --bongit-menue: #0f2a31;
     --bongit-banner-bild: var(--bongit-banner-dunkel);
     --bongit-banner-hoehe: var(--bongit-banner-dunkel-hoehe, 90px);
@@ -358,9 +367,9 @@ html.bongit-hell {
     --bongit-kopf-grund: #ebe3d1;
     --bongit-kopf-text: #1a3a43;
     --bongit-kopf-text-leise: #4f666d;
-    --bongit-kopf-logo: url("/plugins/bongit-theme/images/zeichen-petrol.png?v=2026.11.25.1746");
-    --bongit-kopf-muster: url("/plugins/bongit-theme/images/platine-hell.svg?v=2026.11.25.1746");
-    --bongit-seiten-muster: url("/plugins/bongit-theme/images/flaeche-hell.svg?v=2026.11.25.1746");
+    --bongit-kopf-logo: url("/plugins/bongit-theme/images/zeichen-petrol.png?v=2026.11.25.1839");
+    --bongit-kopf-muster: url("/plugins/bongit-theme/images/platine-hell.svg?v=2026.11.25.1839");
+    --bongit-seiten-muster: url("/plugins/bongit-theme/images/flaeche-hell.svg?v=2026.11.25.1839");
     --bongit-menue: #1a3a43;
     --bongit-banner-bild: var(--bongit-banner-hell);
     --bongit-banner-hoehe: var(--bongit-banner-hell-hoehe, 90px);
@@ -645,6 +654,29 @@ html.bongit ::-webkit-scrollbar-corner {
     }
 }
 
+/* Rundungen und Kleinteile, die Unraid fest setzt */
+html.bongit pre,
+html.bongit .user-list {
+    border-radius: var(--bongit-radius);
+}
+html.bongit code {
+    border-radius: 4px;
+}
+/* Einstellungsgruppen (div.shade, z. B. Netzwerk, Proxy, Freigabe-Details) wie Kacheln */
+html.bongit div.shade {
+    border: 1px solid var(--bongit-linie);
+    border-radius: var(--bongit-radius) !important;
+}
+html.bongit #lastUploaded {
+    color: var(--bongit-text-leise) !important;
+}
+html.bongit .select2-selection__arrow > b {
+    border-top-color: var(--bongit-text-leise) !important;
+}
+html.bongit #warningMessage {
+    color: var(--bongit-rot-text) !important;
+}
+
 
 /* ==== 20-kopf.css ==== */
 /* Kopfzeile, Hauptmenü, Symbolleiste, Reiter, Titelleisten, Fußzeile. */
@@ -836,6 +868,13 @@ html.bongit .tabs button[role="tab"] {
     opacity: 1 !important;
     transition: color var(--bongit-uebergang), background-color var(--bongit-uebergang);
 }
+/* Fokus: kein Ring (die Reiterleiste scrollt waagerecht und schnitt ihn bis auf einen
+   senkrechten Strich rechts ab), stattdessen hinterlegt wie beim Darüberfahren */
+html.bongit .tabs button[role="tab"]:focus,
+html.bongit .tabs button[role="tab"]:focus-visible {
+    outline: none !important;
+}
+html.bongit .tabs button[role="tab"]:focus-visible,
 html.bongit .tabs button[role="tab"]:hover {
     color: var(--bongit-text) !important;
     background-color: var(--bongit-hover) !important;
@@ -886,7 +925,7 @@ html.bongit #footer {
 html.bongit #footer a { color: var(--bongit-link); }
 html.bongit #footer a:hover { color: var(--bongit-text); }
 html.bongit #copyright::before {
-    content: "Ginkgo by bongIT 2026.11.25.1746";
+    content: "Ginkgo by bongIT 2026.11.25.1839";
     margin-right: 14px;
     color: var(--bongit-text-leise);
     white-space: nowrap;
@@ -1078,7 +1117,8 @@ html.bongit .switch-button-label.on { color: var(--bongit-text); }
 html.bongit table.unraid,
 html.bongit table.tablesorter,
 html.bongit table.disk_status,
-html.bongit table.share_status {
+html.bongit table.share_status,
+html.bongit table:is(.usb_mounts, .samba_mounts, .usb_absent, .disk_mounts, .remote_mounts, .iso_mounts) {
     background: var(--bongit-flaeche);
     border: 1px solid var(--bongit-kachel-rand);
     border-radius: var(--bongit-radius);
@@ -1141,6 +1181,12 @@ html.bongit .usage-disk > span:first-child.greenbar,
 html.bongit .usage-disk > span.greenbar { background-color: var(--bongit-gruen); }
 html.bongit .usage-disk > span + span {
     color: var(--bongit-text);
+}
+
+/* Tabellenköpfe von tablesorter nicht fett (wie auf Start) */
+html.bongit :is(th.tablesorter-header, .tablesorter-header-inner),
+html.bongit table#t1 thead tr th {
+    font-weight: 400 !important;
 }
 
 
@@ -1540,6 +1586,53 @@ html.bongit .unapi :is(.rounded-md, .rounded-lg, .rounded-xl, .rounded-2xl, .rou
     border-radius: var(--bongit-radius) !important;
 }
 
+/* Tailwind-Grautöne und -Grün der Vue-Seiten (Downgrade, Registrierung) auf Hausfarben */
+html.bongit .unapi .bg-gray-200 {
+    background-color: var(--bongit-erhoben) !important;
+}
+html.bongit .unapi .text-gray-800 {
+    color: var(--bongit-text) !important;
+}
+html.bongit .unapi :is(.hover\:bg-gray-300:hover) {
+    background-color: var(--bongit-hover) !important;
+}
+html.bongit .unapi .bg-green-200 {
+    background-color: color-mix(in srgb, var(--bongit-gruen) 22%, var(--bongit-flaeche)) !important;
+}
+html.bongit .unapi .text-green-800 {
+    color: var(--bongit-text) !important;
+}
+html.bongit .unapi :is(.border-gray-200, .border-gray-300, .dark\:border-gray-700) {
+    border-color: var(--bongit-linie) !important;
+}
+html.bongit .unapi [class*="text-green-5"],
+html.bongit .unapi [class*="text-green-6"] {
+    color: var(--bongit-gruen) !important;
+}
+/* Knöpfe mit 2-px-Rand (Downgrade): ruhige Fläche wie die übrigen Nebenknöpfe */
+html.bongit .unapi .group.text-center.border-2 {
+    background: var(--bongit-erhoben) !important;
+    color: var(--bongit-text) !important;
+    border: 1px solid var(--bongit-knopf-rand) !important;
+    border-radius: var(--bongit-radius) !important;
+}
+/* Schritt-Kreise im Unraid-Verlauf Rot → Orange: Hausrot, flach */
+html.bongit .unapi .from-unraid-red {
+    background-image: none !important;
+    background-color: var(--bongit-rot) !important;
+}
+
+/* Rote Hauptknöpfe (Downgrade, Lizenz verwalten): die rote Fläche ist ein eigenes Element
+   hinter dem Knopf (.from-unraid-red) – Schrift papierfarben, Rand unsichtbar */
+html.bongit .unapi .group.text-center.border-2:has(> .from-unraid-red) {
+    color: var(--bongit-knopf-text) !important;
+    border-color: transparent !important;
+}
+/* Karten der Vue-Seiten: feiner Rand statt 2 px */
+html.bongit .unapi .group\/card {
+    border-width: 1px !important;
+}
+
 
 /* ==== 80-seiten.css ==== */
 /* Einzelne Seiten und Plugins mit eigenen Farben. */
@@ -1565,8 +1658,8 @@ html.bongit.bongit-hell i.PanelIcon {
 html.bongit img.PanelImg[src*="/bongit-theme/images/bongit-theme.png"] {
     object-position: -9999px 0;
     background-color: var(--bongit-akzent-hell);
-    -webkit-mask: url("/plugins/bongit-theme/images/bildmarke.png?v=2026.11.25.1746") center / contain no-repeat;
-    mask: url("/plugins/bongit-theme/images/bildmarke.png?v=2026.11.25.1746") center / contain no-repeat;
+    -webkit-mask: url("/plugins/bongit-theme/images/bildmarke.png?v=2026.11.25.1839") center / contain no-repeat;
+    mask: url("/plugins/bongit-theme/images/bildmarke.png?v=2026.11.25.1839") center / contain no-repeat;
 }
 html.bongit.bongit-hell img.PanelImg[src*="/bongit-theme/images/bongit-theme.png"] {
     background-color: var(--bongit-akzent);
@@ -1815,6 +1908,157 @@ html.bongit.bongit-dunkel .CodeMirror-cursor {
     border-color: var(--bongit-text) !important;
 }
 
+/* ---- Statistik (/Stats): Highcharts-Diagramme und Balken -------------------------- */
+html.bongit .highcharts-background,
+html.bongit rect[fill^="url(#highcharts"] {
+    fill: var(--bongit-flaeche) !important;
+    stroke: var(--bongit-kachel-rand);
+    rx: 6px;
+}
+html.bongit .highcharts-plot-background {
+    fill: transparent !important;
+}
+html.bongit .highcharts-axis-labels text,
+html.bongit .highcharts-axis-labels text tspan,
+html.bongit .highcharts-legend-item text,
+html.bongit .highcharts-legend-item text tspan {
+    fill: var(--bongit-text-leise) !important;
+    color: var(--bongit-text-leise) !important;
+}
+html.bongit .highcharts-title,
+html.bongit .highcharts-title tspan,
+html.bongit .highcharts-axis-title,
+html.bongit .highcharts-axis-title tspan {
+    fill: var(--bongit-text) !important;
+    color: var(--bongit-text) !important;
+}
+html.bongit .highcharts-grid-line,
+html.bongit .highcharts-axis-line,
+html.bongit .highcharts-tick {
+    stroke: var(--bongit-linie) !important;
+    stroke-opacity: 1 !important;
+}
+html.bongit .mybar.whitebar:not(#menu *) {
+    background: var(--bongit-erhoben) !important;
+}
+html.bongit .mybar.greenbar:not(#menu *) {
+    background: var(--bongit-gruen) !important;
+}
+html.bongit .mybar.graybar:not(#menu *) {
+    background: var(--bongit-linie) !important;
+}
+html.bongit div.mybar {
+    border-radius: var(--bongit-radius) !important;
+}
+html.bongit :is(.greenbar, .orangebar, .redbar) {
+    box-shadow: none !important;
+}
+
+/* ---- User Scripts: Kategorie-Köpfe ohne grellen Verlauf ---------------------------- */
+html.bongit div.category-header {
+    background: var(--bongit-erhoben) !important;
+    border: 1px solid var(--bongit-linie);
+    border-radius: var(--bongit-radius) var(--bongit-radius) 0 0 !important;
+}
+html.bongit span.category-header-text {
+    color: var(--bongit-text) !important;
+}
+html.bongit div.category-content {
+    background-image: none !important;
+    border-color: var(--bongit-linie) !important;
+}
+html.bongit div.category-content b > span {
+    color: var(--bongit-link) !important;
+}
+
+/* ---- Boot Parameters: Abschnitte im Hausstil ------------------------------------- */
+html.bongit h3.section-header {
+    color: var(--bongit-text) !important;
+    border-bottom-color: var(--bongit-akzent-hell) !important;
+}
+html.bongit.bongit-hell h3.section-header {
+    border-bottom-color: var(--bongit-akzent) !important;
+}
+html.bongit div.warning-box {
+    border-left-color: var(--bongit-orange) !important;
+    border-radius: var(--bongit-radius) !important;
+}
+html.bongit span.parameter-code {
+    background: var(--bongit-erhoben) !important;
+    border-radius: 4px !important;
+}
+html.bongit span.legend-radio {
+    background: var(--bongit-feld) !important;
+    border-color: var(--bongit-knopf-rand) !important;
+}
+html.bongit :is(#current-config-label, span.legend-item) {
+    color: var(--bongit-text-leise) !important;
+}
+html.bongit pre#preview-content span {
+    color: var(--bongit-gruen) !important;
+}
+html.bongit :is(.syslinux-section, .boot-entry) {
+    border-radius: var(--bongit-radius) !important;
+}
+
+/* ---- Systemprotokoll hell: Schriftfarben lesbar ------------------------------------ */
+html.bongit.bongit-hell :is(pre span.system, label span.system, span.system.label) {
+    color: var(--bongit-akzent) !important;
+}
+html.bongit.bongit-hell :is(pre span.warn, span.warn.label) {
+    color: #8a5808 !important;
+}
+
+/* ---- Code-Editor (CodeMirror) hell: Rand ohne Fremdgrau -------------------------- */
+html.bongit.bongit-hell .CodeMirror-gutters {
+    background: var(--bongit-erhoben) !important;
+    border-color: var(--bongit-linie) !important;
+}
+
+/* ---- Apps: Beta-Ecke wie die übrigen Eckbänder, Beschreibung im Info-Fenster --------- */
+html.bongit .betaCardBackground {
+    background-color: var(--bongit-knopf) !important;
+}
+html.bongit div.popupDescription {
+    border-radius: var(--bongit-radius) !important;
+}
+
+/* ---- Nachprüfung: Reste ------------------------------------------------------------ */
+html.bongit .highcharts-subtitle,
+html.bongit .highcharts-subtitle tspan {
+    fill: var(--bongit-text-leise) !important;
+}
+html.bongit .highcharts-data-label text,
+html.bongit .highcharts-data-label text tspan {
+    fill: var(--bongit-text) !important;
+    stroke: none !important;
+    text-shadow: none !important;
+}
+/* User Scripts: Trennlinien zwischen den Skripten ohne Rot-Petrol-Verlauf, Pfeil lesbar */
+html.bongit .category-scripts.vo-separator > tr:not(:last-child) {
+    border-image: none !important;
+    border-bottom: 1px solid var(--bongit-linie) !important;
+}
+html.bongit .category-header::before {
+    color: var(--bongit-text) !important;
+}
+/* Boot Parameters: Kleinteile */
+html.bongit span.section-badge {
+    color: var(--bongit-link) !important;
+}
+html.bongit :is(.legend-separator, .boot-entries-legend) {
+    color: var(--bongit-text-leise) !important;
+}
+/* Versionsangabe im Kopf (Platzhalter beim Laden) */
+html.bongit span.unraid-header-boot-version {
+    color: var(--bongit-kopf-text-leise) !important;
+}
+/* Code-Editor als Feld wie die übrigen Eingaben */
+html.bongit .CodeMirror {
+    border: 1px solid var(--bongit-linie);
+    border-radius: var(--bongit-radius);
+}
+
 
 /* ==== 90-schmal.css ==== */
 /* Schmale Fenster (halber Bildschirm, Tablet, Handy). */
@@ -1882,11 +2126,11 @@ html.bongit #footer .footer-right {
     }
 }
 ]]></INLINE>
-<SHA256>3a0f6257e302b113c00597a05e723bcbbdcb4e170fb118446249d9c0e539c1cb</SHA256>
+<SHA256>cba8f9e08c03100619c247380e92c8ad2dfb4e275875bb820bb78c1e5a6da6ae</SHA256>
 </FILE>
 <FILE Name="&emhttp;/styles/login.css">
 <INLINE><![CDATA[
-/* Ginkgo by bongIT 2026.11.25.1746: Login-Seite (c) 2026 bongIT – Markus Bong, MIT-Lizenz.
+/* Ginkgo by bongIT 2026.11.25.1839: Login-Seite (c) 2026 bongIT – Markus Bong, MIT-Lizenz.
  *
  * Steht am Ende von default-cases.css, das Unraid auf jeder Seite lädt – deshalb gilt alles
  * nur für Elemente der Login-Seite (#login).  Hell oder dunkel nach der Systemeinstellung des
@@ -1949,7 +2193,7 @@ section#login .angle::after {
     display: none !important;
 }
 section#login .wordmark {
-    background: url("/plugins/bongit-theme/images/logo-papier.png?v=2026.11.25.1746") left center / contain no-repeat;
+    background: url("/plugins/bongit-theme/images/logo-papier.png?v=2026.11.25.1839") left center / contain no-repeat;
 }
 section#login .wordmark svg {
     opacity: 0;
@@ -1991,11 +2235,11 @@ section#login .error {
     color: var(--bl-rot) !important;
 }
 ]]></INLINE>
-<SHA256>bf273efda9bf49519ce2c0622955b227ebe0012ac8bed8a7bb3397b7336fc61a</SHA256>
+<SHA256>8f547a53ac7af883fe180abf52b8316250fa689053622e16dc7f54a8242a2a06</SHA256>
 </FILE>
 <FILE Name="&emhttp;/styles/protokoll.css">
 <INLINE><![CDATA[
-/* Ginkgo by bongIT 2026.11.25.1746: Protokollfenster (logging.htm) (c) 2026 bongIT – Markus Bong, MIT.
+/* Ginkgo by bongIT 2026.11.25.1839: Protokollfenster (logging.htm) (c) 2026 bongIT – Markus Bong, MIT.
  * Fassung über die Klasse am <html> (setzt der Block in logging.htm, siehe einbinden.sh). */
 html.bongit {
     --bp-grund: #fbf8f2;
@@ -2034,7 +2278,7 @@ html.bongit.bongit-dunkel span.system { color: #9ed3df; background-color: rgb(61
 html.bongit.bongit-dunkel span.array { color: #5cd68a; background-color: rgb(92 214 138 / 0.14); }
 html.bongit.bongit-dunkel span.login { color: #ffb38a; background-color: rgb(255 120 60 / 0.14); }
 ]]></INLINE>
-<SHA256>76cd29207c54d9f87d1868a957da90c2535b924730f313574741eb81a29450a8</SHA256>
+<SHA256>d3e223b9ad533665b01c416813a5f31ee68466fa27674e70bcdbc38de6288629</SHA256>
 </FILE>
 <FILE Name="&emhttp;/BongitTheme.page">
 <INLINE><![CDATA[
@@ -2780,9 +3024,9 @@ Einstellungen unter „Ginkgo“.  Hell/Dunkel/Automatisch: Knopf oben rechts in
 </FILE>
 <FILE Name="&emhttp;/VERSION">
 <INLINE><![CDATA[
-2026.11.25.1746
+2026.11.25.1839
 ]]></INLINE>
-<SHA256>d46e3e210e2facbbc5be981b87f45b00cd22526365f0220a8e12e6482fb99f7a</SHA256>
+<SHA256>55b2fca2c8b7ea15f310ed75b715506c8ecf6241f9b1585a04b446ea7233fc10</SHA256>
 </FILE>
 <FILE Name="&emhttp;/images/bildmarke.png" Type="base64">
 <INLINE>iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADDPmHLAAA0qUlEQVR42u19eXxcZdX/Oee5k5kkkyZNG2buvWkjULaySoFSNlnE
@@ -3880,7 +4124,7 @@ WAbQGctYBtAZy9gH2/8H0cSFaeoZRjEAAAAASUVORK5CYII=</INLINE>
 bash /usr/local/emhttp/plugins/bongit-theme/scripts/einbinden.sh >/dev/null
 echo ""
 echo "----------------------------------------------------------------"
-echo " Ginkgo by bongIT 2026.11.25.1746 ist installiert."
+echo " Ginkgo by bongIT 2026.11.25.1839 ist installiert."
 if [ -f /boot/config/plugins/bongit-theme/DISABLED ]; then
   echo " Notschalter: /boot/config/plugins/bongit-theme/DISABLED liegt vor, das Theme bleibt aus."
 else
