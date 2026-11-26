@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CommunityApplications>
-  <Profile>Unraid plugins by bongIT – Markus Bong (Kahl am Main, Germany): IT services for small businesses and pharmacies.
+  <Profile>Unraid plugins by Markus Bong.
 
-**Ginkgo** by bongIT – a calm light and dark theme for the Unraid webGUI in the bongIT house style (petrol, paper, red).</Profile>
+**Ginkgo** by Markus Bong – a calm light and dark theme for the Unraid webGUI in the bongIT house style (petrol, paper, red).</Profile>
   <Icon>https://raw.githubusercontent.com/bongIT-OSS/Unraid-Plugins/main/icon.png</Icon>
   <WebPage>https://github.com/bongIT-OSS/Unraid-Plugins</WebPage>
 </CommunityApplications>
