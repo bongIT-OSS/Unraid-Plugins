@@ -1,6 +1,6 @@
 # bongIT – Unraid-Plugins
 
-Unraid plugins by bongIT – Markus Bong, listed in Community Applications.
+Unraid plugins by Markus Bong, listed in Community Applications.
 
 | Plugin | Install (Plugins → Install Plugin) |
 |---|---|
